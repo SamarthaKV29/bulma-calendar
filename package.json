@@ -4,7 +4,7 @@
   "main": "dist/js/bulma-calendar.js",
   "style": "dist/css/bulma-calendar.min.css",
   "sass": "src/sass/index.sass",
-  "version": "6.1.18",
+  "version": "6.1.19",
   "scripts": {
     "commit": "git-cz",
     "travis-deploy-once": "travis-deploy-once",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wikiki/bulma-calendar.git"
+    "url": "https://github.com/SamarthaKV29/bulma-calendar.git"
   },
   "keywords": [
     "Bulma",
