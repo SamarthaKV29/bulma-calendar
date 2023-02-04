@@ -49,7 +49,7 @@ const config = {
       format: 'expanded'
     },
     source: paths.src + 'sass/',
-    destination: paths.dist + 'css/'
+    destination: paths.demo + paths.assets + 'css/'
   },
   javascript: {
     input: 'index.js',
@@ -59,7 +59,7 @@ const config = {
       format: 'umd'
     },
     source: paths.src + 'js/',
-    destination: paths.dist + 'js/'
+    destination: paths.demo + paths.assets + 'js/'
   }
 };
 
@@ -71,6 +71,7 @@ const config = {
 // Uses Sass compiler to process styles, adds vendor prefixes, minifies, then
 // outputs file to the appropriate location.
 gulp.task('build:styles', function () {
+  console.log("Building styles");
   if (fs.existsSync(config.sass.source + config.sass.input)) {
     return gulp
       .src(config.sass.dependencies.concat([config.sass.source + config.sass.input]))
@@ -106,10 +107,11 @@ gulp.task('clean:styles', function () {
 });
 
 gulp.task('copy:styles', function () {
-    return gulp
-        .src(config.sass.destination + config.sass.output.filename + '.min.css')
-        .pipe(gulp.dest(paths.src + paths.demo + paths.assets + 'css'))
-        .pipe(gulp.dest(paths.demo + paths.assets + 'css'));
+  console.log("Copying styles");
+  return gulp
+    .src(config.sass.destination + config.sass.output.filename + '.min.css')
+    .pipe(gulp.dest(paths.src + paths.demo + paths.assets + 'css'))
+    .pipe(gulp.dest(paths.demo + paths.assets + 'css'));
 });
 
 /**
@@ -139,7 +141,7 @@ gulp.task('build:scripts', function () {
             options: {
               babelrc: './babelrc'
             }
-          }, ],
+          },],
         }
       }), webpack)
 
@@ -148,9 +150,9 @@ gulp.task('build:scripts', function () {
 
       .pipe(concat(config.javascript.output.filename + '.min.js'))
       .pipe(uglify({
-            keep_fnames: true,
-            ie8: false,
-          }).on('error', function (err) {
+        keep_fnames: true,
+        ie8: false,
+      }).on('error', function (err) {
         log(colors.red('[Error]'), err.toString());
       }))
       .pipe(gulp.dest(config.javascript.destination)
@@ -171,10 +173,10 @@ gulp.task('clean:scripts', function () {
 });
 
 gulp.task('copy:scripts', function () {
-    return gulp
-        .src(config.javascript.destination + config.javascript.output.filename + '.min.js')
-        .pipe(gulp.dest(paths.src + paths.demo + paths.assets + 'js'))
-        .pipe(gulp.dest(paths.demo + paths.assets + 'js'));
+  return gulp
+    .src(config.javascript.destination + config.javascript.output.filename + '.min.js')
+    .pipe(gulp.dest(paths.src + paths.demo + paths.assets + 'js'))
+    .pipe(gulp.dest(paths.demo + paths.assets + 'js'));
 });
 
 /**
@@ -184,28 +186,28 @@ gulp.task('copy:scripts', function () {
  */
 
 gulp.task('clean', function () {
-    return del(paths.dist);
+  return del(paths.dist);
 });
 
 gulp.task('build', gulp.series('clean', 'build:styles', 'build:scripts', 'copy:styles', 'copy:scripts'));
 
-gulp.task('sync', function(callback) {
-    browserSync.reload();
-    callback();
+gulp.task('sync', function (callback) {
+  browserSync.reload();
+  callback();
 })
 
-gulp.task('watch', gulp.series('build', function() {
+gulp.task('watch', gulp.series('build', function () {
 
-    browserSync.init({
-        server: paths.demo,
-        ghostMode: false, // Toggle to mirror clicks, reloads etc. (performance)
-        logFileChanges: true,
-        logLevel: 'debug',
-        open: true // Toggle to automatically open page when starting.
-    });
+  browserSync.init({
+    server: paths.demo,
+    ghostMode: false, // Toggle to mirror clicks, reloads etc. (performance)
+    logFileChanges: true,
+    logLevel: 'debug',
+    open: true // Toggle to automatically open page when starting.
+  });
 
-    gulp.watch(config.javascript.source + paths.pattern.js, gulp.series('build:scripts', 'copy:scripts', 'sync'));
-    gulp.watch(config.sass.source + paths.pattern.sass, gulp.series('build:styles', 'copy:styles', 'sync'));
+  gulp.watch(config.javascript.source + paths.pattern.js, gulp.series('build:scripts', 'copy:scripts', 'sync'));
+  gulp.watch(config.sass.source + paths.pattern.sass, gulp.series('build:styles', 'copy:styles', 'sync'));
 
 }));
 
@@ -278,7 +280,7 @@ gulp.task('launch:demo', gulp.series('demo:dependencies', function () {
     ghostMode: false, // Toggle to mirror clicks, reloads etc. (performance)
     logFileChanges: true,
     logLevel: 'debug',
-    open: true // Toggle to automatically open page when starting.
+    open: false // Toggle to automatically open page when starting.
   });
 
   // Watch site settings.
