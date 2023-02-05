@@ -49,7 +49,7 @@ const config = {
       format: 'expanded'
     },
     source: paths.src + 'sass/',
-    destination: paths.demo + paths.assets + 'css/'
+    destination: paths.dist + 'css/'
   },
   javascript: {
     input: 'index.js',
@@ -59,7 +59,7 @@ const config = {
       format: 'umd'
     },
     source: paths.src + 'js/',
-    destination: paths.demo + paths.assets + 'js/'
+    destination: paths.dist + 'js/'
   }
 };
 
