@@ -26,13 +26,10 @@
     "datepicker",
     "date picker"
   ],
-  "author": "Wikiki <wikiki@protonmail.com> (https://creativebulma.net/author/wikiki)",
-  "contributors": [
-    "Michael Hack <info@michael-hack.de> (https://www.michael-hack.de)"
-  ],
+  "author": "Sam V",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Wikiki/bulma-calendar/issues"
+    "url": "https://github.com/SamarthaKV29/bulma-calendar/issues"
   },
   "homepage": "https://doc.mh-s.de/bulma-calendar",
   "dependencies": {
