@@ -45,7 +45,7 @@ const config = {
     input: 'index.sass',
     dependencies: [paths.bulma + '_all.sass'],
     output: {
-      filename: pkg.name,
+      filename: pkg.packageName,
       format: 'expanded'
     },
     source: paths.src + 'sass/',
@@ -54,8 +54,8 @@ const config = {
   javascript: {
     input: 'index.js',
     output: {
-      name: camelCase(pkg.name),
-      filename: pkg.name,
+      name: camelCase(pkg.packageName),
+      filename: pkg.packageName,
       format: 'umd'
     },
     source: paths.src + 'js/',
