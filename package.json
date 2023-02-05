@@ -1,5 +1,5 @@
 {
-  "name": "bulma-calendar",
+  "name": "@eliteappz/bulma-calendar",
   "description": "Display a calendar for date/time selection, in different colors and sizes",
   "main": "dist/js/bulma-calendar.js",
   "style": "dist/css/bulma-calendar.min.css",
