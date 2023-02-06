@@ -9,9 +9,9 @@ ready(function () {
 
         calendar.value(start);
 
-        // calendar.on('clear', (datepicker) => {
-        //     console.log('clear', datepicker.data.value());
-        // })
+        calendar.on('clear', (datepicker) => {
+            console.log('clear', datepicker.data.value());
+        })
         calendar.on('save', function(datepicker) {
             console.log(datepicker.data.value());
         });

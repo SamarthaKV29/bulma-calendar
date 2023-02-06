@@ -4602,7 +4602,7 @@ var EventEmitter = function () {
 
       if (eventName !== null) {
         if (Array.isArray(eventName)) {
-          name.forEach(function (e) {
+          eventName.forEach(function (e) {
             return _this.removeListeners(e, middleware);
           });
         } else {
