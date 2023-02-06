@@ -299,7 +299,7 @@ declare namespace bulmaCalendar {
     };
   }
 
-  type EventType = 'show' | 'hide' | 'select' | 'select:start';
+  type EventType = 'show' | 'hide' | 'select' | 'select:start' | 'clear';
 
   interface Event<T extends EventType = EventType> {
     type: T;

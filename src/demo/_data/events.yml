@@ -16,3 +16,6 @@
 - name: 'select:start'
   description: 'Triggered when the start date is selected'
   parameters: 'bulmaCalendar instance'
+- name: 'clear'
+  description: 'Triggered when the date is cleared'
+  parameters: 'bulmaCalendar instance'

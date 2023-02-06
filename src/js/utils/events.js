@@ -16,7 +16,7 @@ export default class EventEmitter {
   removeListeners(eventName = null, middleware = false) {
     if (eventName !== null) {
       if (Array.isArray(eventName)) {
-        name.forEach(e => this.removeListeners(e, middleware));
+        eventName.forEach(e => this.removeListeners(e, middleware));
       } else {
         this._listeners.delete(eventName);
 
